@@ -26,10 +26,11 @@ public class SendEmailConsumer {
     }
 
     @KafkaListener(topics = "sendEmail",groupId = "emailService")
-    public void handleSendEmailMessage(String message){
+    public void handleSendEmailMessage(String message) {
         //Code to send an email to the user.
+        SendEmailDto emailDto;
         try {
-            SendEmailDto emailDto = objectMapper.readValue(message, SendEmailDto.class);
+            emailDto = objectMapper.readValue(message, SendEmailDto.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -46,9 +47,10 @@ public class SendEmailConsumer {
         Authenticator auth = new Authenticator() {
             //override the getPasswordAuthentication method
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("noreply.temp2@gmail.com", "qrog urmd oxqu ryub");
+                return new PasswordAuthentication("noreply.temp2@gmail.com", "qrogurmdoxquryub");
             }
         };
         Session session = Session.getInstance(props, auth);
+        emailUtil.sendEmail(session, emailDto.getTo(), emailDto.getSubject(), emailDto.getBody());
     }
 }

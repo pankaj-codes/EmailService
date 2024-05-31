@@ -37,9 +37,9 @@ public class EmailUtil {
             msg.addHeader("format", "flowed");
             msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-            msg.setFrom(new InternetAddress("no_reply@example.com", "NoReply-JD"));
+            msg.setFrom(new InternetAddress("noreply.temp2@gmail.com", "NoReply-JD"));
 
-            msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
+            msg.setReplyTo(InternetAddress.parse("yadavpankaj28@gmail.com", false));
 
             msg.setSubject(subject, "UTF-8");
 
@@ -50,7 +50,6 @@ public class EmailUtil {
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
             System.out.println("Message is ready");
             Transport.send(msg);
-
             System.out.println("Email Sent Successfully!!");
         }
         catch (Exception e) {

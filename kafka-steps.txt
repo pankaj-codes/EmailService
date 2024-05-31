@@ -1,0 +1,12 @@
+1. Download kafka tar from the website
+2. https://kafka.apache.org/downloads
+3. Unzip the zip in c
+4. If you want, rename the unzipped folder to kafka
+5. Start the zookeeper
+    a. Set the log folder by changing the path in C:\kafka\config\zookeeper.properties, update dataDir=c:/kfka/zookeeper-data
+    b. Run cmd to bring up the zookeeper
+    c. ==> ./bin/windows/zookeeper-start.bat ./config/zookeeper.properties
+6. Start the Kafka
+    a. Set the log folder by changing the path in C:\kafka\config\server.properties, update log.dirs=c:/kafka/kafka-logs
+    b. Cmd to bring up the kafka
+    c. ==> .\bin\windows\kafka-server-start.bat .\config\server.properties
